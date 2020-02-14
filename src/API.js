@@ -2,6 +2,35 @@ let API_KEY = '02e57727a2bacdfb5d79e0d822f8544c';
 // let API_KEY = process.env.API_KEY;
 import $ from 'jquery';
 
+export function callAPI(input, type) {
+  let query;
+  if (type === 'symptom') {
+    query = `query=${input}`;
+  } else if (type === 'name') {
+    query = `last_name=${input}`;
+  }
+  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=20&user_key=${API_KEY}`;
+
+  fetch(url)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      const doctors = getDoctors(json);
+      return doctors;
+    })
+    .then(function(doctors) {
+      displayResults(doctors);
+      if (doctors.length === 0) {
+        displayError('empty');
+      }
+    })
+    .catch(function(error) {
+      console.log(error);
+      displayError('error');
+    });
+}
+
 function getDoctors(json) {
   let doctors = [];
   for (let doctor of json.data) {
@@ -68,8 +97,7 @@ function displayResults(doctors) {
           <p>Phone: ${phone}</p>
         </div>`;
       if (contact.website) {
-        address +
-          `<div id="website"><a href=${contact.website}>${contact.website}</a></div>`;
+        address += `<p id="website"><a href=${contact.website}>${contact.website}</a></p>`;
       }
       addresses += address;
     }
@@ -90,39 +118,14 @@ function displayResults(doctors) {
 
 function displayError(error) {
   if (error === 'empty') {
-    console.log("We're sorry, no doctors met your search criteria.");
+    $('#results').empty();
+    $('#results').append(
+      `<h4 class="error">We're sorry, no doctors met your search criteria.</h4>`
+    );
   } else if (error === 'error') {
-    console.log(
-      "We're sorry, but we are currently having trouble accessing our database of doctors. Please try again at another time."
+    $('#results').empty();
+    $('#results').append(
+      `<h4 class="error">We're sorry, but we are currently having trouble accessing our database of doctors. Please try again at another time.</h4>`
     );
   }
-}
-
-export function callAPI(input, type) {
-  let query;
-  if (type === 'symptom') {
-    query = `query=${input}`;
-  } else if (type === 'name') {
-    query = `last_name=${input}`;
-  }
-  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=20&user_key=${API_KEY}`;
-
-  fetch(url)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(json) {
-      const doctors = getDoctors(json);
-      return doctors;
-    })
-    .then(function(doctors) {
-      displayResults(doctors);
-      if (doctors.length === 0) {
-        displayError('empty');
-      }
-    })
-    .catch(function(error) {
-      console.log(error);
-      displayError('error');
-    });
 }

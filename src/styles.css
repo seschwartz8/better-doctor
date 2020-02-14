@@ -2,7 +2,6 @@
 blue: #497CAB
 beige: #FFF3E2
 grey: #F2F2F2 
-pink: #FF719D
 green: #C7D0A0
 */
 
@@ -98,4 +97,27 @@ input[type='text'] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+#address :nth-child(1) {
+  font-weight: 600;
+}
+
+#website {
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+a {
+  color: #497cab;
+}
+
+a:active,
+a:hover {
+  color: #c7d0a0;
+}
+
+.error {
+  margin-top: 20px;
+  text-align: center;
 }

@@ -40,7 +40,7 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 
 ## Known Bugs
 
-- No known bugs
+- Doctors' website URLs do not always load properly such that they are clickable.
 
 ## Technologies Used
 
