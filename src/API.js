@@ -1,18 +1,32 @@
 let API_KEY = '02e57727a2bacdfb5d79e0d822f8544c';
 // COULD NOT GET ENVIRONMENT VARIABLES TO BE RECOGNIZED AS DEFINED
 // let API_KEY = process.env.API_KEY;
+// let GEO_API_KEY = process.env.GEO_API_KEY;
+// let GEO_API_KEY = `AIzaSyATj7Y46uUXB8JuPSg0sceNu0gYOu0P1cI`;
+
 import $ from 'jquery';
 
-export function callAPI(input, type) {
+// function callGoogleAPI(city) {
+//   let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${GEO_API_KEY}`;
+//   fetch(url)
+//     .then(function(response) {
+//       return response.json();
+//     })
+//     .then(function(json) {
+//       let lat = json.results[0].geometry.location.lat;
+//       let lng = json.results[0].geometry.location.lng;
+//       let location = [lat, lng];
+//       return location;
+//     });
+// }
+
+export function callDoctorAPI(input, type, latitude, longitude) {
   let query;
   if (type === 'symptom') {
     query = `query=${input}`;
   } else if (type === 'name') {
     query = `last_name=${input}`;
   }
-
-  let latitude = 47.6062;
-  let longitude = 122.3321;
 
   let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=${latitude}%2C-${longitude}%2C25&user_location=${latitude}%2C-${longitude}&skip=0&limit=15&user_key=${API_KEY}`;
 
