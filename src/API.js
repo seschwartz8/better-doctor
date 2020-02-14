@@ -1,4 +1,5 @@
 let API_KEY = '02e57727a2bacdfb5d79e0d822f8544c';
+// COULD NOT GET ENVIRONMENT VARIABLES TO BE RECOGNIZED AS DEFINED
 // let API_KEY = process.env.API_KEY;
 import $ from 'jquery';
 
@@ -25,8 +26,7 @@ export function callAPI(input, type) {
         displayError('empty');
       }
     })
-    .catch(function(error) {
-      console.log(error);
+    .catch(function() {
       displayError('error');
     });
 }

@@ -10,7 +10,10 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 
 ## Setup/Installation Requirements
 
+- Get a free API key from the BetterDoctor API website
 - Clone the repo to your desktop
+- Create a .env file in the root director
+- Store your key in the .env file in the format: API_KEY = YOURKEYHERE
 - "\$ npm install" in your terminal
 - "\$ npm run start" in your terminal
 - The application should open in a local server
