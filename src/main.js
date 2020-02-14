@@ -2,20 +2,20 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
-import { callAPISymptom, callAPIName } from './API';
+import { callAPI } from './API';
 
 $(document).ready(function() {
   $('form.sypmtom').submit(function(event) {
     event.preventDefault();
 
-    let sypmtomInput = $('#symptom-input').val();
-    callAPISymptom(sypmtomInput);
+    let symptomInput = $('#symptom-input').val();
+    callAPI(symptomInput, 'symptom');
   });
 
   $('form.name').submit(function(event) {
     event.preventDefault();
 
     let nameInput = $('#name-input').val();
-    callAPIName(nameInput);
+    callAPI(nameInput, 'name');
   });
 });

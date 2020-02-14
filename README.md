@@ -31,12 +31,12 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 ##### If no doctors meet the user's search criteria, the screen will display a notice
 
 - Example input: notrealname
-- Example output: "Sorry, no doctors meet your search criteria."
+- Example output: "We're sorry, no doctors met your search criteria."
 
 ##### If the query fails to return a valid result, the screen will display an error
 
 - Example input: Toschi (but API call fails)
-- Example output: "Sorry, but we are currently having trouble accessing our database of doctors. Please try again at another time."
+- Example output: "We're sorry, but we are currently having trouble accessing our database of doctors. Please try again at another time."
 
 ## Known Bugs
 
