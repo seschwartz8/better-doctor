@@ -18,30 +18,25 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 
 ### Specs
 
-##### description
+##### User can search for providers based on symptoms
 
-- Example input:
-- Example output:
+- Example input: "toothache"
+- Example output: "Steven Toschi" (and description about this doctor)
 
-##### description
+##### User can search for providers by name
 
-- Example input:
-- Example output:
+- Example input: Toschi
+- Example output: "Steven Toschi" (and description about this doctor)
 
-##### description
+##### If no doctors meet the user's search criteria, the screen will display a notice
 
-- Example input:
-- Example output:
+- Example input: notrealname
+- Example output: "Sorry, no doctors meet your search criteria."
 
-##### description
+##### If the query fails to return a valid result, the screen will display an error
 
-- Example input:
-- Example output:
-
-##### description
-
-- Example input:
-- Example output:
+- Example input: Toschi (but API call fails)
+- Example output: "Sorry, but we are currently having trouble accessing our database of doctors. Please try again at another time."
 
 ## Known Bugs
 
@@ -49,7 +44,15 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 
 ## Technologies Used
 
-\* \* \*
+- Javascript
+- BetterDoctor API
+- HTML/CSS
+- Bootstrap
+- jQuery
+- Jest
+- Webpack
+- Babel
+- ESlint
 
 ### License
 
