@@ -1,5 +1,6 @@
 let API_KEY = '02e57727a2bacdfb5d79e0d822f8544c';
 // let API_KEY = process.env.API_KEY;
+import $ from 'jquery';
 
 function getDoctors(json) {
   let doctors = [];
@@ -8,13 +9,13 @@ function getDoctors(json) {
     let lastName = doctor.profile.last_name;
     let newPatients = doctor.practices.some(acceptingNew);
     let imgUrl = doctor.profile.image_url;
-    let contact = getContact(doctor);
+    let contacts = getContactInfo(doctor);
     let doctorObj = {
       firstName: firstName,
       lastName: lastName,
       newPatients: newPatients,
       imgUrl: imgUrl,
-      contact: contact
+      contacts: contacts
     };
     doctors.push(doctorObj);
   }
@@ -27,7 +28,7 @@ function acceptingNew(practice) {
     : false;
 }
 
-function getContact(doctor) {
+function getContactInfo(doctor) {
   let contactInfo = [];
   for (let practice of doctor.practices) {
     if (practice.within_search_area) {
@@ -48,7 +49,42 @@ function getContact(doctor) {
 }
 
 function displayResults(doctors) {
-  console.log(doctors);
+  for (let doctor of doctors) {
+    let acceptingNewPatients;
+    if (doctor.newPatients) {
+      acceptingNewPatients = `<div id="new-patients">Accepting new patients</div>`;
+    } else {
+      acceptingNewPatients = `<div id="new-patients"></div>`;
+    }
+
+    let addresses = '';
+    for (let contact of doctor.contacts) {
+      let { street, city, state, zip, phone } = contact;
+      console.log(street + city + state + zip + phone);
+      let address = `
+        <div id="address">
+          <p>${street} ${city}, ${state} ${zip}</p>
+          <p>Phone: ${phone}$</p>
+        </div>`;
+      if (contact.website) {
+        address +
+          `<div id="website"><a href=${contact.website}>${contact.website}</a></div>`;
+      }
+      addresses.concat(address);
+    }
+
+    $('#results').append(`
+    <div id="doc-container">
+      <div id="doc-header">
+        <h5 id="full-name">${doctor.firstName} ${doctor.lastName}</h5>
+        ${acceptingNewPatients}
+      </div>
+      <div id="doc-details">
+        ${addresses}
+      </div>
+    </div>
+    `);
+  }
 }
 
 function displayError(error) {
@@ -82,7 +118,7 @@ export function callAPI(input, type) {
       doctors.length > 0 ? displayResults(doctors) : displayError('empty');
     })
     .catch(function(error) {
-      console.log(error.text());
+      console.log(error);
       displayError('error');
     });
 }
