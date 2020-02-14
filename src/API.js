@@ -6,23 +6,23 @@ function acceptingNew(practice) {
     : false;
 }
 
-function getAddresses(doctor) {
-  let addresses = [];
+function getContact(doctor) {
+  let contact = [];
   for (let practice of doctor.practices) {
     if (practice.within_search_area) {
       let { city, state, street, zip } = practice.visit_address;
       let { number: phone } = practice.phones[0];
       let { website } = practice;
-      addresses.push(`${street}
+      contact.push(`${street}
       ${city}, ${state} ${zip}
       Phone: ${phone}`);
       if (website) {
-        addresses.push(`
+        contact.push(`
         Website: <a href"${website}">${website}</a>`);
       }
     }
   }
-  return addresses;
+  return contact;
 }
 
 export function callAPISymptom(symptomInput) {
@@ -35,21 +35,23 @@ export function callAPISymptom(symptomInput) {
       return response.json();
     })
     .then(function(json) {
-      // let doctors = [];
+      let doctors = [];
       for (let doctor of json.data) {
         let firstName = doctor.profile.first_name;
         let lastName = doctor.profile.last_name;
         let newPatients = doctor.practices.some(acceptingNew);
         let imgUrl = doctor.profile.image_url;
-        let addresses = getAddresses(doctor);
-        console.log(firstName);
-        console.log(lastName);
-        console.log(newPatients);
-        console.log(imgUrl);
-        console.log(addresses);
-        // let doctorObj = {};
+        let contact = getContact(doctor);
+        let doctorObj = {
+          firstName: firstName,
+          lastName: lastName,
+          newPatients: newPatients,
+          imgUrl: imgUrl,
+          contact: contact
+        };
+        doctors.push(doctorObj);
       }
-      console.log(json);
+      console.log(doctors);
     });
 }
 
