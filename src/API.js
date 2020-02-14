@@ -10,7 +10,11 @@ export function callAPI(input, type) {
   } else if (type === 'name') {
     query = `last_name=${input}`;
   }
-  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=20&user_key=${API_KEY}`;
+
+  let latitude = 47.6062;
+  let longitude = 122.3321;
+
+  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=${latitude}%2C-${longitude}%2C25&user_location=${latitude}%2C-${longitude}&skip=0&limit=15&user_key=${API_KEY}`;
 
   fetch(url)
     .then(function(response) {
