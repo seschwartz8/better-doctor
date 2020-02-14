@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TITLE</title>
+    <title>Better Doctor Finder</title>
   </head>
   <body>
-    <h1>THIS IS A HEADER</h1>
-    <p>THIS IS A PARAGRAPH</p>
+    <div class="jumbotron">
+      <h1>Find A Doctor</h1>
+      <p class="lead">We help you get better, faster.</p>
+    </div>
+    <div class="container">
+      <!-- FORMS -->
+      <div id="form-container">
+        <!-- SYMPTOM FORM -->
+        <form class="sypmtom">
+          <div class="form-group">
+            <label for="symptom-input">Search by symptom keyword</label>
+            <input
+              type="text"
+              class="form-control"
+              id="symptom-input"
+              placeholder="Enter symptom"
+            />
+            <button type="submit" class="btn symptom">Search</button>
+          </div>
+        </form>
+        <!-- SYMPTOM FORM -->
+
+        <!-- NAME FORM -->
+        <form class="name">
+          <div class="form-group">
+            <label for="name-input">Search by doctor's last name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name-input"
+              placeholder="Enter last name"
+            />
+            <button type="submit" class="btn name">Search</button>
+          </div>
+        </form>
+        <!-- NAME FORM -->
+      </div>
+      <!-- FORMS -->
+    </div>
   </body>
 </html>
