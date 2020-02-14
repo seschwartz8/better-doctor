@@ -7,22 +7,23 @@ function acceptingNew(practice) {
 }
 
 function getContact(doctor) {
-  let contact = [];
+  let contactInfo = [];
   for (let practice of doctor.practices) {
     if (practice.within_search_area) {
       let { city, state, street, zip } = practice.visit_address;
       let { number: phone } = practice.phones[0];
-      let { website } = practice;
-      contact.push(`${street}
-      ${city}, ${state} ${zip}
-      Phone: ${phone}`);
-      if (website) {
-        contact.push(`
-        Website: <a href"${website}">${website}</a>`);
-      }
+      let practiceObj = {
+        street: street,
+        city: city,
+        state: state,
+        zip: zip,
+        phone: phone
+      };
+      if (practice.website) practiceObj.website = practice.website;
+      contactInfo.push(practiceObj);
     }
   }
-  return contact;
+  return contactInfo;
 }
 
 export function callAPISymptom(symptomInput) {
