@@ -49,6 +49,8 @@ function getContactInfo(doctor) {
 }
 
 function displayResults(doctors) {
+  $('#results').empty();
+  $('input').val('');
   for (let doctor of doctors) {
     let acceptingNewPatients;
     if (doctor.newPatients) {
@@ -60,17 +62,16 @@ function displayResults(doctors) {
     let addresses = '';
     for (let contact of doctor.contacts) {
       let { street, city, state, zip, phone } = contact;
-      console.log(street + city + state + zip + phone);
       let address = `
         <div id="address">
           <p>${street} ${city}, ${state} ${zip}</p>
-          <p>Phone: ${phone}$</p>
+          <p>Phone: ${phone}</p>
         </div>`;
       if (contact.website) {
         address +
           `<div id="website"><a href=${contact.website}>${contact.website}</a></div>`;
       }
-      addresses.concat(address);
+      addresses += address;
     }
 
     $('#results').append(`
@@ -115,7 +116,10 @@ export function callAPI(input, type) {
       return doctors;
     })
     .then(function(doctors) {
-      doctors.length > 0 ? displayResults(doctors) : displayError('empty');
+      displayResults(doctors);
+      if (doctors.length === 0) {
+        displayError('empty');
+      }
     })
     .catch(function(error) {
       console.log(error);
