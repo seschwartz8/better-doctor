@@ -1,24 +1,8 @@
 let API_KEY = '02e57727a2bacdfb5d79e0d822f8544c';
 // COULD NOT GET ENVIRONMENT VARIABLES TO BE RECOGNIZED AS DEFINED
 // let API_KEY = process.env.API_KEY;
-// let GEO_API_KEY = process.env.GEO_API_KEY;
-// let GEO_API_KEY = `AIzaSyATj7Y46uUXB8JuPSg0sceNu0gYOu0P1cI`;
 
 import $ from 'jquery';
-
-// function callGoogleAPI(city) {
-//   let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${GEO_API_KEY}`;
-//   fetch(url)
-//     .then(function(response) {
-//       return response.json();
-//     })
-//     .then(function(json) {
-//       let lat = json.results[0].geometry.location.lat;
-//       let lng = json.results[0].geometry.location.lng;
-//       let location = [lat, lng];
-//       return location;
-//     });
-// }
 
 export function callDoctorAPI(input, type, latitude, longitude) {
   let query;

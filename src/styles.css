@@ -20,7 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  flex-wrap: wrap;
 }
 
 #form-container {
@@ -30,13 +30,31 @@ body {
   width: 100%;
 }
 
+form.city {
+  width: 60%;
+  padding: 10px;
+}
+
 .form-group {
   text-align: center;
 }
 
+.form-group.city {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-inline {
+  display: flex;
+  justify-content: center;
+}
+
 form {
   background-color: white;
-  padding: 40px;
+  padding: 30px;
   box-shadow: 5px 5px 10px #666666;
   border-radius: 20px 0 0 20px;
   margin: 20px 20px;
@@ -45,11 +63,12 @@ form {
 .btn {
   background-color: #497cab;
   color: white;
+  margin: 5px;
 }
 
 input[type='text'] {
   background-color: #f2f2f2;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 #results {
