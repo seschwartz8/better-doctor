@@ -44,6 +44,7 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 ## Known Bugs
 
 - Doctors' website URLs do not always load properly such that they are clickable.
+- geoAPI file is present with API call to google maps to be used in upgrade where user can choose the search city
 
 ## Technologies Used
 

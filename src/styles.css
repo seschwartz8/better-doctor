@@ -30,26 +30,8 @@ body {
   width: 100%;
 }
 
-form.city {
-  width: 60%;
-  padding: 10px;
-}
-
 .form-group {
   text-align: center;
-}
-
-.form-group.city {
-  width: 90%;
-  max-width: 500px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.form-inline {
-  display: flex;
-  justify-content: center;
 }
 
 form {

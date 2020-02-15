@@ -3,16 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
 import { callDoctorAPI } from './docAPI';
-import { callGeoAPI } from './geoAPI';
 
 $(document).ready(function() {
-  let city = 'Seattle';
-  $('form.city').submit(function(event) {
-    event.preventDefault();
-    let cityInput = $('#city-input').val();
-    city = callGeoAPI(cityInput);
-  });
-
   $('form.symptom').submit(function(event) {
     event.preventDefault();
     let symptomInput = $('#symptom-input').val();
