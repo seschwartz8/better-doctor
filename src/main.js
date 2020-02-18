@@ -5,15 +5,22 @@ import $ from 'jquery';
 import { callDoctorAPI } from './docAPI';
 
 $(document).ready(function() {
+  let city;
+
+  $('form.city').submit(function(event) {
+    event.preventDefault();
+    city = $('#city-input').val();
+  });
+
   $('form.symptom').submit(function(event) {
     event.preventDefault();
     let symptomInput = $('#symptom-input').val();
-    callDoctorAPI(symptomInput, 'symptom', '47.6062', '122.3321');
+    callDoctorAPI(symptomInput, 'symptom', city);
   });
 
   $('form.name').submit(function(event) {
     event.preventDefault();
     let nameInput = $('#name-input').val();
-    callDoctorAPI(nameInput, 'name', '47.6062', '122.3321');
+    callDoctorAPI(nameInput, 'name', city);
   });
 });

@@ -1,10 +1,7 @@
-let API_KEY = '02e57727a2bacdfb5d79e0d822f8544c';
-// COULD NOT GET ENVIRONMENT VARIABLES TO BE RECOGNIZED AS DEFINED
-// let API_KEY = process.env.API_KEY;
-
 import $ from 'jquery';
+import { callGeoAPI } from './geoAPI';
 
-export function callDoctorAPI(input, type, latitude, longitude) {
+export function callDoctorAPI(input, type, city) {
   let query;
   if (type === 'symptom') {
     query = `query=${input}`;
@@ -12,7 +9,12 @@ export function callDoctorAPI(input, type, latitude, longitude) {
     query = `last_name=${input}`;
   }
 
-  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=${latitude}%2C-${longitude}%2C25&user_location=${latitude}%2C-${longitude}&skip=0&limit=15&user_key=${API_KEY}`;
+  let location;
+  (async () => {
+    location = await callGeoAPI(city);
+  })();
+
+  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=${location[0]}%2C${location[1]}%2C25&user_location=${location[0]}%2C${location[1]}&skip=0&limit=15&user_key=${process.env.API_KEY}`;
 
   fetch(url)
     .then(function(response) {

@@ -15,6 +15,7 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 - Create a .env file in the root director
 - Store your key in the .env file in the format: API_KEY = YOURKEYHERE
 - "\$ npm install" in your terminal
+- "\$ npm install dotenv-webpack --save-dev" in your terminal
 - "\$ npm run start" in your terminal
 - The application should open in a local server
 - Enjoy!
