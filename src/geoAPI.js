@@ -8,7 +8,6 @@ export function callGeoAPI(city) {
       let lat = json.results[0].geometry.location.lat.toString();
       let lng = json.results[0].geometry.location.lng.toString();
       let location = [lat, lng];
-      console.log('first location ' + location);
       return location;
     });
   return response;
