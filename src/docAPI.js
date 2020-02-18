@@ -1,18 +1,12 @@
 import $ from 'jquery';
-import { callGeoAPI } from './geoAPI';
 
-export function callDoctorAPI(input, type, city) {
+export function callDoctorAPI(input, type, location) {
   let query;
   if (type === 'symptom') {
     query = `query=${input}`;
   } else if (type === 'name') {
     query = `last_name=${input}`;
   }
-
-  let location;
-  (async () => {
-    location = await callGeoAPI(city);
-  })();
 
   let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=${location[0]}%2C${location[1]}%2C25&user_location=${location[0]}%2C${location[1]}&skip=0&limit=15&user_key=${process.env.API_KEY}`;
 

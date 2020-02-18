@@ -1,12 +1,12 @@
 # Better Doctor Finder
 
-#### Use this app to search BetterDoctor's API for doctors in your area. Current Version: 2/14/20
+#### Use this app to search BetterDoctor's API for doctors in your area. Current Version: 2/17/20
 
 #### By Sarah "Sasa" Schwartz
 
 ## Description
 
-This program makes API calls to the BetterDoctor API and presents the information to the user. The user can search for a specific doctor by name or input specific symptoms and receive doctor recommendations in their area.
+This program makes API calls to the BetterDoctor API and Google Maps API and presents the information to the user. The user can search for a specific doctor in their area by name or by inputting specific symptoms. They will receive doctor recommendations that fit their search in the selected city.
 
 ## Setup/Installation Requirements
 
@@ -32,6 +32,11 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 - Example input: Toschi
 - Example output: "Steven Toschi" (and description about this doctor)
 
+##### User can input specific city in which to find doctors
+
+- Example input: "Seattle" and last name of "Cabodi"
+- Example output: Jessica Cabodi
+
 ##### If no doctors meet the user's search criteria, the screen will display a notice
 
 - Example input: notrealname
@@ -44,8 +49,7 @@ This program makes API calls to the BetterDoctor API and presents the informatio
 
 ## Known Bugs
 
-- Doctors' website URLs do not always load properly such that they are clickable.
-- geoAPI file is present with API call to google maps to be used in upgrade where user can choose the search city
+- Doctors' website URLs do not always load properly from the API such that they are clickable.
 
 ## Technologies Used
 
