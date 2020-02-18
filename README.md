@@ -10,10 +10,11 @@ This program makes API calls to the BetterDoctor API and Google Maps API and pre
 
 ## Setup/Installation Requirements
 
-- Get a free API key from the BetterDoctor API website
+- Get a free API key from the BetterDoctor API website and the Google Maps API
 - Clone the repo to your desktop
 - Create a .env file in the root director
-- Store your key in the .env file in the format: API_KEY = YOURKEYHERE
+- Store your keys in the .env file in the format: DOC_API_KEY = DOCTORAPIKEY
+  GEO_API_KEY = GOOGLEMAPSAPIKEY
 - "\$ npm install" in your terminal
 - "\$ npm install dotenv-webpack --save-dev" in your terminal
 - "\$ npm run start" in your terminal

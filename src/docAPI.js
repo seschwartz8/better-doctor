@@ -8,7 +8,7 @@ export function callDoctorAPI(input, type, location) {
     query = `last_name=${input}`;
   }
 
-  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=${location[0]}%2C${location[1]}%2C25&user_location=${location[0]}%2C${location[1]}&skip=0&limit=15&user_key=${process.env.API_KEY}`;
+  let url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=${location[0]}%2C${location[1]}%2C25&user_location=${location[0]}%2C${location[1]}&skip=0&limit=15&user_key=${process.env.DOC_API_KEY}`;
 
   fetch(url)
     .then(function(response) {
